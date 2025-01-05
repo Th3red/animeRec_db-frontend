@@ -101,6 +101,7 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const animeId = searchParams.get("anime_id") || "";
   const animeName = searchParams.get("anime_name") || "";
+  const error = new Error('Something went wrong'); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   if (!animeId && !animeName) {
     console.error("No anime_id or anime_name provided in the request.");

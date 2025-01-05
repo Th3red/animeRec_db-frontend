@@ -117,7 +117,7 @@ export async function GET(request) {
         if (imageUrl !== fallbackImage) {
           return NextResponse.json({ imageUrl });
         }
-      } catch (aniListError) {
+      } catch (error) {
         console.warn(`AniList fallback failed for "${animeName}".`);
       }
     }
@@ -129,7 +129,7 @@ export async function GET(request) {
         if (imageUrl !== fallbackImage) {
           return NextResponse.json({ imageUrl });
         }
-      } catch (jikanError) {
+      } catch (error) {
         console.warn(`Jikan fallback failed for ID ${animeId}.`);
       }
     }
@@ -139,7 +139,7 @@ export async function GET(request) {
       try {
         imageUrl = await fetchFromKitsu(animeName);
         return NextResponse.json({ imageUrl });
-      } catch (kitsuError) {
+      } catch (error) {
         console.warn(`Kitsu fallback failed for "${animeName}".`);
       }
     }

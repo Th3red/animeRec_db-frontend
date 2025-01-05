@@ -101,7 +101,6 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const animeId = searchParams.get("anime_id") || "";
   const animeName = searchParams.get("anime_name") || "";
-  const error = new Error('Something went wrong'); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   if (!animeId && !animeName) {
     console.error("No anime_id or anime_name provided in the request.");
@@ -118,8 +117,8 @@ export async function GET(request) {
         if (imageUrl !== fallbackImage) {
           return NextResponse.json({ imageUrl });
         }
-      } catch (error) {
-        console.error(`AniList fallback failed for "${animeName}".`);
+      } catch (aniListError) {
+        console.error(`AniList fallback failed for "${animeName}".`, aniListError);
       }
     }
 
@@ -130,8 +129,8 @@ export async function GET(request) {
         if (imageUrl !== fallbackImage) {
           return NextResponse.json({ imageUrl });
         }
-      } catch (error) {
-        console.error(`Jikan fallback failed for ID ${animeId}.`);
+      } catch (jikanError) {
+        console.error(`Jikan fallback failed for ID ${animeId}.`, jikanError);
       }
     }
 
@@ -140,8 +139,8 @@ export async function GET(request) {
       try {
         imageUrl = await fetchFromKitsu(animeName);
         return NextResponse.json({ imageUrl });
-      } catch (error) {
-        console.error(`Kitsu fallback failed for "${animeName}".`);
+      } catch (kitsuError) {
+        console.error(`Kitsu fallback failed for "${animeName}".`, kitsuError);
       }
     }
 

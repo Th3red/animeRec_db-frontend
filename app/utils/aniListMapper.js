@@ -1,15 +1,10 @@
-// utils/aniListMapper.js
 
 import stringSimilarity from 'string-similarity';
 
 const ANILIST_API_URL = "https://graphql.anilist.co";
 const KITSU_API_URL = "https://kitsu.io/api/edge/anime";
 
-/**
- * Fetch the official name from AniList.
- * @param {string} originalName - The original anime name from your database.
- * @returns {Promise<string>} - The official anime name from AniList.
- */
+
 async function fetchAniListName(originalName) {
   const query = `
     query ($search: String) {
@@ -62,11 +57,7 @@ async function fetchAniListName(originalName) {
   }
 }
 
-/**
- * Fetch the official name from Jikan.
- * @param {number} animeId - The anime ID from your database.
- * @returns {Promise<string>} - The official anime name from Jikan.
- */
+
 async function fetchJikanName(animeId) {
   try {
     const response = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
@@ -78,8 +69,6 @@ async function fetchJikanName(animeId) {
     const data = await response.json();
     const officialName = data?.data?.title || `Anime ID ${animeId}`;
 
-    // Optionally, you can perform a similarity check here as well
-    // For simplicity, we'll assume Jikan's title is correct
 
     return officialName;
   } catch (error) {
@@ -88,11 +77,6 @@ async function fetchJikanName(animeId) {
   }
 }
 
-/**
- * Fetch the official name from Kitsu.
- * @param {string} originalName - The original anime name from your database.
- * @returns {Promise<string>} - The official anime name from Kitsu.
- */
 async function fetchKitsuName(originalName) {
   try {
     const encoded = encodeURIComponent(originalName);
@@ -130,15 +114,8 @@ async function fetchKitsuName(originalName) {
   }
 }
 
-/**
- * Main function to map an array of recommended anime to AniList naming standards with fallbacks.
- * @param {Array<Object>} recommendations - Array of recommended anime objects.
- * @returns {Promise<Array<Object>>} - Array with updated anime names.
- */
 export async function mapAnimeToOfficialNames(recommendations) {
   const updatedRecs = [];
-
-  // Optional: Implement caching here to avoid redundant API calls
 
   for (let anime of recommendations) {
     const { anime_id, anime_name = "Unknown Title" } = anime;

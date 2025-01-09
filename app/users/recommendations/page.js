@@ -1,5 +1,5 @@
 // app/users/recommendations/page.jsx
-import { fetchRecommendations } from "../../utils/api"; // Adjust path as needed
+import { fetchRecommendations } from "../../utils/api";
 import AnimeCard from "../../components/AnimeCard";
 
 export default async function RecommendationsPage({ searchParams }) {

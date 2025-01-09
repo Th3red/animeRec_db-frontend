@@ -1,4 +1,3 @@
-// utils/api.js
 
 export const fetchRecommendations = async (userId, animeList) => {
     try {

@@ -13,13 +13,11 @@ export default function AnimeCard({ anime }) {
     anime_id,
     anime_name = "Unknown Anime",
     genre = "Unknown Genre",
-    // If your backend is now returning "stars" for both algorithms:
     stars = 1,
   } = anime;
 
   const [imageUrl, setImageUrl] = useState("/placeholder.svg");
 
-  // We'll clamp the stars to a max of 5, if that makes sense for your UI
   const maxStars = 5;
 
   const clampedStars = Math.min(stars, maxStars);
@@ -29,7 +27,6 @@ export default function AnimeCard({ anime }) {
 
     async function fetchImage() {
       try {
-        // Call your local Next.js route (or external API) to get an image URL
         const res = await fetch(
           `/api/fetch-anime-image?anime_id=${anime_id}&anime_name=${encodeURIComponent(anime_name)}`
         );

@@ -15,7 +15,7 @@ export default function Home() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState("user-user");
 
   // Helper function to ensure topAnime always has up to `max` slots
-  // This ensures we can safely add new anime entries without index issues
+  // add new anime entries without index issues
   const ensureTopAnimeSize = (newArray, max = 10) => {
     // If newArray has more than `max`, slice it
     if (newArray.length > max) {
@@ -26,7 +26,7 @@ export default function Home() {
 
   // Callback for MALFavorites
   const handleFavoritesFetched = (malFavorites) => {
-    // We want to fill existing empty slots in `topAnime` with MAL favorites
+    // fill existing empty slots in `topAnime` with MAL favorites
     const newTopAnime = [...topAnime];
 
     // For each MAL favorite, if there's an empty slot, replace it
@@ -39,7 +39,6 @@ export default function Home() {
       }
     }
 
-    // If we still have more MAL favorites and haven't reached 10,
     // continue appending
     while (favIndex < malFavorites.length && newTopAnime.length < 10) {
       newTopAnime.push({
@@ -129,7 +128,7 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Enforce min 5, max 10
+    // min 5, max 10
     const filledAnime = topAnime.filter((anime) => anime.name.trim());
     if (filledAnime.length < 5) {
       alert("Please provide at least 5 anime before submitting!");

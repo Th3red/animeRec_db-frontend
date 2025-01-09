@@ -1,5 +1,4 @@
-import AnimeCard from "./AnimeCard"; // or wherever you placed the new file
-
+import AnimeCard from "./AnimeCard"; 
 const RecommendationsList = ({
   recommendations = [],
   activeGenre = "all",
@@ -7,8 +6,6 @@ const RecommendationsList = ({
   const filteredRecs = recommendations.filter((anime) => {
     if (activeGenre === "all") return true;
     return anime.genre?.toLowerCase().includes(activeGenre.toLowerCase());
-    // or if anime.genres is an array:
-    // return anime.genres?.some((g) => g.toLowerCase() === activeGenre);
   });
 
   if (filteredRecs.length === 0) {

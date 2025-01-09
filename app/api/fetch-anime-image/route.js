@@ -1,7 +1,7 @@
 // app/api/fetch-anime-image/route.js
 
 import { NextResponse } from "next/server";
-import { retryFetch } from "../../utils/retry"; // Adjust the path as needed
+import { retryFetch } from "../../utils/retry"; 
 
 const fallbackImage = "/placeholder.svg";
 
@@ -86,7 +86,7 @@ async function fetchFromKitsu(animeName) {
       throw new Error("No results from Kitsu");
     }
 
-    // Kitsu's original image link is in `attributes.posterImage.original`
+    
     return firstAnime.attributes?.posterImage?.original || fallbackImage;
   } catch (error) {
     console.warn(`Kitsu fetch error for "${animeName}":`, error.message);

@@ -39,7 +39,6 @@ https://anime-rec-db-frontend.vercel.app/users/anime
 
 ### **Database Management**
 
-- Configured and connected to an **AWS RDS database**, ensuring reliability and scalability for user and anime data.
 - Utilized **SQLAlchemy** for efficient ORM operations, connection pooling, and advanced SQL queries.
 
 ### **Efficient Data Structures**
@@ -82,13 +81,10 @@ https://anime-rec-db-frontend.vercel.app/users/anime
 
 ## Deployment and Scalability Skills
 
-### **AWS Integration**
-
-- Successfully deployed and connected an **AWS RDS database** to the backend, ensuring high availability.
 
 ### **Scalability Techniques**
 
-- Built and managed a **hnswlib ANN index**, enabling fast approximate nearest neighbor search and scaling to large datasets with millions of users and anime.
+- Built and managed a **hnswlib ANN index**, enabling fast approximate nearest neighbor search and scaling to large datasets of users and anime.
 
 ### **Deployment Challenges**
 
@@ -119,3 +115,4 @@ https://anime-rec-db-frontend.vercel.app/users/anime
 - Gained confidence in designing, profiling, and scaling backend systems for high-performance applications.
 
 ---
+
